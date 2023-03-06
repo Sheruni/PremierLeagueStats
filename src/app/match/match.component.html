@@ -1,0 +1,97 @@
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <div class="container">
+
+
+    <div class="card-container">
+
+      <div class="card-1" (click)="clearMessages()"> 
+        <i class="material-icons" style="font-size:32px;">refresh</i>
+      </div>
+
+        <div class="card" routerLink="/clubs"> <i id ="icon" class="material-icons" style="font-size:30px;">home</i>
+            Clubs
+        </div>
+        <div class="card" (click)="ShowTitle()"><i id="icon" class="fa fa-bolt" style="font-size:30px;" aria-hidden="true"></i> 
+            Generate Match
+        </div>
+
+       
+        <div class="spacer"></div>
+  
+
+        <input type="text" placeholder="Enter Date" [(ngModel)]="searchName">
+
+        <div class="card">
+          <i id ="icon" class="material-icons" style="font-size:30px;">search</i>
+            Search for match
+        </div>
+    
+        <div class="message">
+          <div class="container-1"> <div *ngIf="!showMainContent">
+            <div id="title">Match Details</div>
+                     <div class="alert-message">
+                      <table class="table table-striped" id="greentable">
+                        <thead>
+                          <tr>
+                            <th>Home Team</th>
+                            <th>Home Score</th>
+                            <th>Away Team</th>
+                            <th>Away Score</th>
+                            <th>Date Played</th>
+                    
+                          </tr>
+                        </thead>
+                    
+                        <tbody>
+                          <tr *ngFor="let item of matches">
+                            <td>{{item.homeTeam}}</td>
+                            <td>{{item.homeScore}}</td>
+                            <td>{{item.awayTeam}}</td>
+                            <td>{{item.awayScore}}</td>
+                            <td>{{item.datePlayed}}</td>
+    
+                          </tr>
+                    
+                        </tbody>
+                      </table>
+                     </div> 
+          </div>
+        </div>
+        </div>
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Home Team</th>
+          <th>Score</th>
+          <th>Away Team</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let match of match | filter : searchName">
+            
+          <td>{{match.homeTeam.clubName}}</td>
+          <td>{{match.homeScore}}</td>
+          <td>{{match.awayTeam.clubName}}</td>
+          <td>{{match.awayScore}}</td>
+          <td>{{match.date.day+"/"+ match.date.month+"/"+ match.date.year}}</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+
+
+  </div>

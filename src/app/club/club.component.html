@@ -1,0 +1,55 @@
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <div class="container">
+
+
+    <div class="card-container">
+      <div class="card" [appSort]='clubs' data-oder='desc' data-name='wins'>
+        Sort by Wins
+      </div>
+  
+
+    <div class="card" [appSort]='clubs' data-oder='desc' data-name='goalsScored'>
+      Sort by Goals Scored
+    </div>
+    <!-- This class uses functions from the the sort directive and the sort.ts util -->
+
+    <div class="card" routerLink="/matches"><i id="icon" class="fa fa-soccer-ball-o" style="font-size:24px"></i>
+      Matches
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Club</th>
+          <th>Wins</th>
+          <th>Draws</th>
+          <th>Losses</th>
+          <th>Goals Received</th>
+          <th>Goals Scored</th>
+          <th>Points</th>
+          <th>Matches Played</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let club of clubs">
+          <td>{{club.clubName}}</td>
+          <td>{{club.wins}}</td>
+          <td>{{club.draws}}</td>
+          <td>{{club.losses}}</td>
+          <td>{{club.receivedGoals}}</td>
+          <td>{{club.goalsScored}}</td>
+          <td>{{club.points}}</td>
+          <td>{{club.matchesPlayed}}</td>
+          
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
